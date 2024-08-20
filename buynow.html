@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buy Now Page</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-image: url("image.avif");
+        background-size: cover;
+    }
+    h1 {
+        text-align: center;
+        margin-top: 5px;
+    }
+    form {
+        max-width: 500px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #aba3cd;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    label {
+        font-weight: bold;
+    }
+    input[type="text"],
+    input[type="email"],
+    textarea {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    textarea {
+        resize: vertical;
+        min-height: 100px;
+    }
+    .payment-method-buttons {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+    .payment-method-buttons button {
+        flex: 1;
+        padding: 10px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    .payment-method-buttons button:hover {
+        background-color: #45a049;
+    }
+    .payment-details {
+        display: none;
+    }
+    #orderPlacedMessage {
+        text-align: center;
+        margin-top: 10px;
+        display: none;
+        color: white;
+        background-color: green;
+        padding: 10px;
+        border-radius: 5px;
+    }
+    #onlinePaymentButton{
+        background-color: rgb(164, 30, 61);
+    }
+    #cashOnDeliveryButton{
+        background-color: green;
+    }
+    .button{
+        padding:10px;
+        margin:10px;
+        border:2px solid green;
+        background-color: aqua;
+        border-radius: 10px;
+        margin-left:200px;
+    }
+</style>
+</head>
+<body>
+
+    <h1>Place Your Order</h1>
+<form id="orderForm">
+    <label for="fullName">Full Name:</label><br>
+    <input type="text" id="fullName" name="fullName" required><br>
+    <label for="email">Email:</label><br>
+    <input type="email" id="email" name="email" required><br>
+    <label for="address">Address:</label><br>
+    <textarea id="address" name="address" rows="4" required></textarea><br>
+    <div class="payment-method-buttons">
+        <button type="button" id="onlinePaymentButton">Online Payment</button>
+        <button type="button" id="cashOnDeliveryButton">Cash on Delivery</button>
+    </div>
+    <div class="payment-details">
+        <label for="cardNumber">Card Number:</label><br>
+        <input type="text" id="cardNumber" name="cardNumber"><br>
+        <label for="cvv">CVV:</label><br>
+        <input type="text" id="cvv" name="cvv"><br>
+    </div>
+    <input  class="button" type="submit" value="Submit">
+</form>
+<div id="orderPlacedMessage">Congratulations! Order Placed!!</div>
+<script>
+    const orderForm = document.getElementById('orderForm');
+    const paymentDetails = document.querySelector('.payment-details');
+    const onlinePaymentButton = document.getElementById('onlinePaymentButton');
+    const cashOnDeliveryButton = document.getElementById('cashOnDeliveryButton');
+    const orderPlacedMessage = document.getElementById('orderPlacedMessage');
+
+    orderForm.addEventListener('submit', function(event) {
+        event.preventDefault(); 
+        orderPlacedMessage.style.display = 'block';
+        console.log('Form submitted!');
+    });
+    onlinePaymentButton.addEventListener('click', function() {
+        paymentDetails.style.display = 'block';
+    });
+    cashOnDeliveryButton.addEventListener('click', function() {
+        paymentDetails.style.display = 'none';
+    });
+</script>
+
+</body>
+</html>
